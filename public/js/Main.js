@@ -1,7 +1,7 @@
 define(['router'],
 	function (router) {
 		var start = function () {
-			router.navigate('login', {
+			router.navigate('register', {
 				trigger: true
 			});
 		};

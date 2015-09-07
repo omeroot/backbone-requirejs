@@ -1,13 +1,14 @@
-define(['Views/index','Views/login'],function(IndexView, LoginView){
+define(['Views/index','Views/register'],function(IndexView, RegisterView){
   var MyRouter = Backbone.Router.extend({
     currentView : null,
     routes : {
-      'login' : 'login',
+      'register' : 'register',
       'index' : 'index'
     },
     changeView : function(view){
       if(this.currentView != null){
         this.currentView.undelegateEvents();
+        this.currentView.$el.empty();
       }
       this.currentView = view;
       this.currentView.render();
@@ -15,8 +16,8 @@ define(['Views/index','Views/login'],function(IndexView, LoginView){
     index : function(){
       this.changeView(new IndexView());
     },
-    login : function(){
-      this.changeView(new LoginView());
+    register : function(){
+      this.changeView(new RegisterView());
     }
   });
 

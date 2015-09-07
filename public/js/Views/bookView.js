@@ -4,7 +4,6 @@ define(['text!templates/books.html'],function(bookTemplate){
     template : _.template(bookTemplate),
     render : function(){
       this.$el.html(this.template(this.model.toJSON()));
-      console.log(this);
       return this;
     }
   });

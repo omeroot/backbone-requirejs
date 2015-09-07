@@ -1,4 +1,4 @@
-define(['mainView','text!templates/login.html',],
+define(['mainView','text!templates/register.html'],
 	function (mainView, LoginTemplate) {
 		var view = mainView.extend({
 			el: $('#app'),
