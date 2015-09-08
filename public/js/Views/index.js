@@ -4,7 +4,8 @@ define(['text!templates/books.html','Collections/bookCol.js','Views/bookView'],
 			el: $('#list'),
 			template: _.template(indexTemplate),
 			events : {
-				'click #back-login' :  'redirect_login'
+				'click #back-login' :  'redirect_login',
+				'click #add-book' : 'redirect_add_book'
 			},
 			render: function () {
         bookCol.fetch({
@@ -18,6 +19,7 @@ define(['text!templates/books.html','Collections/bookCol.js','Views/bookView'],
 
         });
 				this.$el.append('<button id="back-login">Register</button>');
+				this.$el.append('<button id="add-book">Add Book</button>');
 			},
       renderItem: function(book){
         var v = new bookView({model : book});
@@ -26,6 +28,9 @@ define(['text!templates/books.html','Collections/bookCol.js','Views/bookView'],
       },
 			redirect_login: function( e ){
 				window.location.hash = 'register';
+			},
+			redirect_add_book: function(){
+				window.location.hash = 'addBook';
 			}
 		});
 

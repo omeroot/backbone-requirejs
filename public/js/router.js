@@ -1,9 +1,10 @@
-define(['Views/index','Views/register'],function(IndexView, RegisterView){
+define(['Views/index','Views/register','Views/addBook'],function(IndexView, RegisterView, addBookView){
   var MyRouter = Backbone.Router.extend({
     currentView : null,
     routes : {
       'register' : 'register',
-      'index' : 'index'
+      'index' : 'index',
+      'addBook' : 'addBook'
     },
     changeView : function(view){
       if(this.currentView != null){
@@ -18,6 +19,9 @@ define(['Views/index','Views/register'],function(IndexView, RegisterView){
     },
     register : function(){
       this.changeView(new RegisterView());
+    },
+    addBook : function(){
+      this.changeView(new addBookView());
     }
   });
 

@@ -6,8 +6,7 @@ require.config({
     text : '/js/libs/text',
     templates : '../templates',
     router : 'router',
-    mainView : 'mainView',
-    models : 'Models'
+    mainView : 'mainView'
   },
   shim : {
     'Backbone' : ['Underscore','jQuery'],
