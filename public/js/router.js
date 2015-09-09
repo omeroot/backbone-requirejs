@@ -1,10 +1,11 @@
-define(['Views/index','Views/register','Views/addBook'],function(IndexView, RegisterView, addBookView){
+define(['Views/index','Views/register','Views/addBook','Views/login'],function(IndexView, RegisterView, addBookView,loginView){
   var MyRouter = Backbone.Router.extend({
     currentView : null,
     routes : {
       'register' : 'register',
       'index' : 'index',
-      'addBook' : 'addBook'
+      'addBook' : 'addBook',
+      'login' : 'login'
     },
     changeView : function(view){
       if(this.currentView != null){
@@ -22,6 +23,19 @@ define(['Views/index','Views/register','Views/addBook'],function(IndexView, Regi
     },
     addBook : function(){
       this.changeView(new addBookView());
+    },
+    login : function(){
+      $.ajax('/api/verifyme',{
+        method:'GET',
+        success:function(data,responseText,jqXHR){
+          if(jqXHR.status == 200)
+            window.location.hash = 'index'
+        },
+        error: _.bind(function(jqXHR,textStatus,errorThrown){
+          console.log(errorThrown);
+          this.changeView(new loginView());
+        },this)
+      }, this);
     }
   });
 

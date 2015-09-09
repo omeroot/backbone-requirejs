@@ -1,7 +1,8 @@
-define(['../js/Models/book.js'], function (bookModel) {
+define(['jQuery','../js/Models/book.js', 'jQueryCookie'], function ($,bookModel) {
+  console.log($);
 	var bookCollection = Backbone.Collection.extend({
-		url: '/books',
-		model: bookModel,
+		url: '/api/books',
+		model: bookModel
 	});
   return new bookCollection();
 });

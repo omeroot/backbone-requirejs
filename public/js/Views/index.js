@@ -4,7 +4,7 @@ define(['text!templates/books.html','Collections/bookCol.js','Views/bookView'],
       el: $('#list'),
       template: _.template(indexTemplate),
       events : {
-        'click #back-login' :  'redirect_login',
+        'click #logout' :  'logout',
         'click #add-book' : 'redirect_add_book'
       },
       render: function () {
@@ -14,11 +14,13 @@ define(['text!templates/books.html','Collections/bookCol.js','Views/bookView'],
             _.each(bookCol.models, _.bind(function(book){
               this.renderItem(book);
             }, this));
-          }, this)
-        }).complete(function(){
-
-        });
-        this.$el.append('<button id="back-login">Register</button>');
+          }, this),
+          error : function(data,responseText,xhr){
+            console.log(responseText.status);
+            window.location.hash = 'login';
+          }
+        })
+        this.$el.append('<button id="logout">Logout</button>');
         this.$el.append('<button id="add-book">Add Book</button>');
       },
       renderItem: function(book){
@@ -26,8 +28,8 @@ define(['text!templates/books.html','Collections/bookCol.js','Views/bookView'],
         v.render();
         this.$el.append(v.$el);
       },
-      redirect_login: function( e ){
-        window.location.hash = 'register';
+      logout: function( e ){
+        //window.location.hash = 'register';
       },
       redirect_add_book: function(){
         window.location.hash = 'addBook';
