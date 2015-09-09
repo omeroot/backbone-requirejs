@@ -30,7 +30,12 @@ define(['text!templates/books.html','Collections/bookCol.js','Views/bookView'],
       },
       logout: function( e ){
         $.ajax('/api/logout',{
-          method:'GET'
+          method:'GET',
+          success: function(data,responseText,jqXHR){
+            $.removeCookie("token");
+            $.removeCookie("email");
+            window.location.hash = 'login';
+          }
         });
       },
       redirect_add_book: function(){

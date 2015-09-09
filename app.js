@@ -91,8 +91,6 @@ apiRouter.get('/verifyme', function (req, res) {
 
 apiRouter.get('/logout', function (req, res) {
   if (isCookie(req)) {
-    res.clearCookie('email');
-    res.clearCookie('token');
     res.status(200).json({success: true, message: "logout success"});
   } else {
     res.status(401).json({success: false, message: "token missing"});
