@@ -5,6 +5,7 @@ var lowdb = require('lowdb');
 var jwt = require('jsonwebtoken');
 var app = express();
 var uuid = require('node-uuid');
+var conf = require('./conf/conf.js');
 
 var books = lowdb('./db/books.json');
 var users = lowdb('./db/users.json');
@@ -55,7 +56,7 @@ app.post('/user/:id', function (req, res) {
   if (!result)
     res.status(400).json({success: false, message: 'user not correct'});
   else {
-    var token = jwt.sign(result, 'omer');
+    var token = jwt.sign(result, conf.secret);
     res.set({
       'X-AuthToken': token
     });
@@ -68,17 +69,24 @@ app.put('/user/:id', function (req, res) {
 });
 
 apiRouter.use(function (req, res, next) {
-  console.log(req.headers['x-authtoken']);
   var token = req.headers['x-authtoken'];
+
   if (!token) {
-    res.status(401).json({success:false,message: "token not found"});
+    res.status(401).json({success: false, message: "token incorrect"});
   } else {
-    next();
+    jwt.verify(token,conf.secret,function(err,decoded){
+      if(err){
+        res.status(401).json({success: false, message: "token incorrect"})
+      }else{
+        req.decoded = decoded;
+        next();
+      }
+    })
   }
 });
 
-apiRouter.get('/verifyme',function(req,res){
-  res.status(200).json({success:true});
+apiRouter.get('/verifyme', function (req, res) {
+  res.status(200).json({success: true});
 });
 
 apiRouter.get('/books', function (req, res) {
@@ -89,6 +97,7 @@ apiRouter.get('/books/:id', function (req, res) {
 });
 apiRouter.post('/books', function (req, res) {
   books('books').push({
+    id: uuid.v1(),
     title: req.body.title,
     author: req.body.author,
     releaseDate: req.body.releaseDate,

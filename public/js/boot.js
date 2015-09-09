@@ -13,9 +13,7 @@ require.config({
     'jQuery': {
       exports: '$'
     },
-    'jQueryCookie': {
-      'deps': ['jQuery']
-    },
+    'jQueryCookie': ['jQuery'],
     'Backbone' : ['Underscore','jQuery'],
     'Main' : ['Backbone']
   }
