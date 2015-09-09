@@ -1,4 +1,4 @@
-define(['text!templates/books.html','Collections/bookCol.js','Views/bookView'],
+define(['text!templates/books.html','../js/Collections/bookCol.js','Views/bookView'],
   function (profileTemplate,bookCol,bookView) {
     var view = Backbone.View.extend({
       el: $('#list'),
