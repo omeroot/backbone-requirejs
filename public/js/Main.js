@@ -1,12 +1,12 @@
 define(['router'],
-	function (router) {
-		var start = function () {
-			router.navigate('register', {
-				trigger: true
-			});
-		};
+  function (router) {
+    var start = function () {
+      router.navigate('register', {
+        trigger: true
+      });
+    };
 
-		return {
-			start: start
-		};
-	});
+    return {
+      start: start
+    };
+  });
