@@ -74,10 +74,10 @@ apiRouter.use(function (req, res, next) {
   if (!token) {
     res.status(401).json({success: false, message: "token incorrect"});
   } else {
-    jwt.verify(token,conf.secret,function(err,decoded){
-      if(err){
+    jwt.verify(token, conf.secret, function (err, decoded) {
+      if (err) {
         res.status(401).json({success: false, message: "token incorrect"})
-      }else{
+      } else {
         req.decoded = decoded;
         next();
       }
@@ -89,11 +89,21 @@ apiRouter.get('/verifyme', function (req, res) {
   res.status(200).json({success: true});
 });
 
+apiRouter.get('/logout', function (req, res) {
+  if (isCookie(req)) {
+    res.clearCookie('email');
+    res.clearCookie('token');
+    res.status(200).json({success: true, message: "logout success"});
+  } else {
+    res.status(401).json({success: false, message: "token missing"});
+  }
+});
+
 apiRouter.get('/books', function (req, res) {
   res.json(books('books'));
 });
 apiRouter.get('/books/:id', function (req, res) {
-  res.json(books('books').find({}));
+  res.json(books('books').find({id: req.params.id}));
 });
 apiRouter.post('/books', function (req, res) {
   books('books').push({
@@ -106,6 +116,14 @@ apiRouter.post('/books', function (req, res) {
 
   res.json(books('books'));
 });
+
+function isCookie(req) {
+  var cookie = req.cookies.token || req.cookies.username;
+  if (typeof cookie === 'undefined')
+    return false;
+
+  return true;
+}
 
 app.use('/api', apiRouter);
 app.listen(1337);

@@ -29,7 +29,9 @@ define(['text!templates/books.html','Collections/bookCol.js','Views/bookView'],
         this.$el.append(v.$el);
       },
       logout: function( e ){
-
+        $.ajax('/api/logout',{
+          method:'GET'
+        });
       },
       redirect_add_book: function(){
         window.location.hash = 'addBook';
