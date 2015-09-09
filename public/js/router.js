@@ -1,9 +1,9 @@
-define(['Views/index','Views/register','Views/addBook','Views/login'],function(IndexView, RegisterView, addBookView,loginView){
+define(['Views/profile','Views/register','Views/addBook','Views/login'],function(ProfileView, RegisterView, addBookView,loginView){
   var MyRouter = Backbone.Router.extend({
     currentView : null,
     routes : {
       'register' : 'register',
-      'index' : 'index',
+      'profile' : 'profile',
       'addBook' : 'addBook',
       'login' : 'login'
     },
@@ -15,8 +15,8 @@ define(['Views/index','Views/register','Views/addBook','Views/login'],function(I
       this.currentView = view;
       this.currentView.render();
     },
-    index : function(){
-      this.changeView(new IndexView());
+    profile : function(){
+      this.changeView(new ProfileView());
     },
     register : function(){
       this.changeView(new RegisterView());
@@ -29,7 +29,7 @@ define(['Views/index','Views/register','Views/addBook','Views/login'],function(I
         method:'GET',
         success:function(data,responseText,jqXHR){
           if(jqXHR.status == 200)
-            window.location.hash = 'index'
+            window.location.hash = 'profile'
         },
         error: _.bind(function(jqXHR,textStatus,errorThrown){
           console.log(errorThrown);

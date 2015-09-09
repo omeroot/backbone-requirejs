@@ -9,7 +9,7 @@ define(['mainView','text!templates/register.html'],
         this.$el.html(LoginTemplate);
       },
       formSend: function () {
-        window.location.hash = 'index';
+        window.location.hash = 'profile';
       }
     });
 

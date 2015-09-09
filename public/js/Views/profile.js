@@ -1,8 +1,8 @@
 define(['text!templates/books.html','Collections/bookCol.js','Views/bookView'],
-  function (indexTemplate,bookCol,bookView) {
+  function (profileTemplate,bookCol,bookView) {
     var view = Backbone.View.extend({
       el: $('#list'),
-      template: _.template(indexTemplate),
+      template: _.template(profileTemplate),
       events : {
         'click #logout' :  'logout',
         'click #add-book' : 'redirect_add_book'
@@ -29,7 +29,7 @@ define(['text!templates/books.html','Collections/bookCol.js','Views/bookView'],
         this.$el.append(v.$el);
       },
       logout: function( e ){
-        //window.location.hash = 'register';
+
       },
       redirect_add_book: function(){
         window.location.hash = 'addBook';

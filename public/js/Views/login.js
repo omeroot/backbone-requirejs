@@ -25,7 +25,7 @@ define(['text!templates/login.html', '../js/Models/user.js'], function (loginTem
               var token = jqXHR.getResponseHeader('X-AuthToken');
               document.cookie="email="+jqXHR.responseJSON.email;
               document.cookie="token="+token;
-              window.location.hash='index';
+              window.location.hash='profile';
             }
           }
         });
