@@ -1,7 +1,7 @@
 var exServer = require('./init.js');
 var lowdb = require('lowdb');
 
-var res = require('./responses/res.js');
+
 var verify = require('./middleware/verify.js');
 
 var db = {
@@ -10,7 +10,7 @@ var db = {
 }
 
 var api = require('./api/api.js')(db);
-
+var res = require('./responses/res.js')(db);
 
 exServer.app.get('/', res.index);
 
