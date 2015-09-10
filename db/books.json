@@ -3,7 +3,7 @@
     {
       "id": "40bba510-56ca-11e5-831c-1f20dd9ae2ac",
       "title": "backbone",
-      "author": "omer",
+      "author": "omer demircan",
       "releaseDate": "10-10-1991",
       "keywords": "omer,backbone"
     },
@@ -20,20 +20,6 @@
       "author": "omer",
       "releaseDate": "34-42-552",
       "keywords": "arabesk"
-    },
-    {
-      "id": "8270f270-56f3-11e5-baaa-61b007a5e859",
-      "title": "kj",
-      "author": "lkjlk",
-      "releaseDate": "10-10-10",
-      "keywords": "klj"
-    },
-    {
-      "id": "e015e0c0-56f3-11e5-baaa-61b007a5e859",
-      "title": "sdf",
-      "author": "sdfs",
-      "releaseDate": "df",
-      "keywords": "sdf"
     }
   ]
 }

@@ -24,3 +24,5 @@ exServer.apiRouter.get('/logout', api.logout);
 exServer.apiRouter.get('/books', api.book);
 exServer.apiRouter.get('/books/:id', api.book_id);
 exServer.apiRouter.post('/books', api.book_post);
+exServer.apiRouter.put('/books/:id',api.book_put);
+exServer.apiRouter.delete('/books/:id',api.book_delete);

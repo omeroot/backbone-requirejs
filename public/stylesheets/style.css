@@ -1,0 +1,64 @@
+ul.menu {
+    list-style: none;
+    padding: 0;
+    margin: 10px auto;
+    border-bottom: 1px solid #333333;
+}
+
+ul.menu li {
+    list-style: none;
+    display: inline-block;
+    padding: 7px 10px;
+    background: #333333;
+    border-radius: 5px 5px 0 0;
+    position: relative;
+}
+
+button {
+    padding: 7px 10px;
+    background: #333333;
+    border-radius: 5px 5px 0 0;
+    position: relative;
+    text-decoration: none;
+    color: #FAFAFA;
+}
+
+button:hover{
+    background: #0d65ad;
+}
+
+ul.menu li.active {
+    border-radius: 0;
+    -moz-border-radius: 0;
+    background: #0d65ad;
+}
+
+ul.menu li:hover {
+    background: #0d65ad;
+    cursor: default;
+}
+
+ul.menu li a, ul.menu li a:hover, ul.menu li a:active, ul.menu li a:visited {
+    display: block;
+    text-decoration: none;
+    color: #FAFAFA;
+}
+
+ul.menu li ul {
+    position: absolute;
+    left: 0;
+    margin-top: 5px;
+    margin-left: -40px;
+    display: none;
+    z-index: 9999;
+}
+
+ul.menu li ul li {
+    border-radius: 0;
+    white-space: nowrap;
+    width: 100%;
+}
+
+ul.menu li:hover ul {
+    display: block;
+}

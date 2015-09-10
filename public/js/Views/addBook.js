@@ -1,13 +1,10 @@
-define(['text!templates/addbook.html', 'Collections/bookCol.js'],
+define(['text!templates/addbook.html', 'bookCol'],
     function (addTemplate, bookCol) {
       var addView = Backbone.View.extend({
         el: $('#app'),
         events: {
           'click #book-form-send': 'addOne',
           'click #list-books': 'redirect_profile'
-        },
-        initialize: function () {
-
         },
         render: function () {
           this.$el.html(addTemplate);

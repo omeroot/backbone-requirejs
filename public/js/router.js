@@ -1,41 +1,38 @@
-define(['Views/profile','Views/register','Views/addBook','Views/login'],function(ProfileView, RegisterView, addBookView,loginView){
+define(['Views/profile', 'Views/register', 'Views/addBook', 'Views/login', 'Views/header','utils'], function (ProfileView, RegisterView, addBookView, loginView, headerView,utils) {
   var MyRouter = Backbone.Router.extend({
-    currentView : null,
-    routes : {
-      'register' : 'register',
-      'profile' : 'profile',
-      'addBook' : 'addBook',
-      'login' : 'login'
+    currentView: null,
+    loggedIn: false,
+    routes: {
+      'register': 'register',
+      'profile': 'profile',
+      'addBook': 'addBook',
+      'login': 'login',
+      'logout': 'login'
     },
-    changeView : function(view){
-      if(this.currentView != null){
+    route: utils.overrideRoute,
+    changeView: function (view) {
+      if (this.currentView != null) {
         this.currentView.undelegateEvents();
         this.currentView.$el.empty();
       }
       this.currentView = view;
       this.currentView.render();
     },
-    profile : function(){
+    loadHeader: function () {
+      new headerView().render();
+    },
+    profile: function () {
+      this.loadHeader();
       this.changeView(new ProfileView());
     },
-    register : function(){
+    register: function () {
       this.changeView(new RegisterView());
     },
-    addBook : function(){
+    addBook: function () {
       this.changeView(new addBookView());
     },
-    login : function(){
-      $.ajax('/api/verifyme',{
-        method:'GET',
-        success:function(data,responseText,jqXHR){
-          if(jqXHR.status == 200)
-            window.location.hash = 'profile'
-        },
-        error: _.bind(function(jqXHR,textStatus,errorThrown){
-          console.log(errorThrown);
-          this.changeView(new loginView());
-        },this)
-      }, this);
+    login: function () {
+      this.changeView(new loginView());
     }
   });
 

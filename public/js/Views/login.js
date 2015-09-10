@@ -20,12 +20,12 @@ define(['text!templates/login.html', '../js/Models/user.js'], function (loginTem
         $("input[name=password]").css("border", "1px solid red");
       } else {
         model.save(null, {
-          complete: function(jqXHR){
-            if(jqXHR.status = 200){
+          complete: function (jqXHR) {
+            if (jqXHR.status = 200) {
               var token = jqXHR.getResponseHeader('X-AuthToken');
-              document.cookie="email="+jqXHR.responseJSON.email;
-              document.cookie="token="+token;
-              window.location.hash='profile';
+              document.cookie = "email=" + jqXHR.responseJSON.email;
+              document.cookie = "token=" + token;
+              window.location.hash = 'profile';
             }
           }
         });
