@@ -4,7 +4,7 @@ define(['text!templates/books.html'], function (bookTemplate) {
       'dblclick li': 'dbclick',
       'click #edit-item': 'edit',
       'click #cancel-edit': 'cancelEdit',
-      'click #delete-item': 'deleteItem'
+      'click #delete-item': 'deleteItem',
     },
     currentLi: null,
     template: _.template(bookTemplate),
@@ -13,13 +13,22 @@ define(['text!templates/books.html'], function (bookTemplate) {
       return this;
     },
     dbclick: function (e) {
+      var self = this;
+
       if (this.currentLi == null) {
         this.currentLi = $(e.currentTarget);
         this.currentLi.addClass('edit');
         this.prevValue = this.currentLi.val();
-        var val = $('.edit').html()
+        var val = $('.edit').html();
         $('div .edit').html("<input><button id='edit-item'>Edit</button><button id='cancel-edit'>Cancel</button></input>");
-        $('input').val(val)
+        $('input').val(val).focus().keydown(function (e) {
+          if (e.keyCode === 27) {
+            self.cancelEdit(e);
+          }
+          if (e.keyCode === 13){
+            self.edit(e);
+          }
+        });
       }
     },
     edit: function (e) {
