@@ -1,5 +1,5 @@
 # backbone-requirejs
 
-##node app.js
+##$node app.js
 
 ##visit localhost:1337
