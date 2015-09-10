@@ -32,6 +32,7 @@ define(function () {
         if (err) throw err;
         if (data == true) {
           if (route == 'login') {
+            this.navigate('profile',{trigger:false});
             callback = this['profile'];
           }
           callback.apply(router, arguments);

@@ -3,6 +3,7 @@ define(['text!templates/books.html'], function (bookTemplate) {
     events: {
       'dblclick li': 'dbclick',
       'click #edit-item': 'edit',
+      'click #cancel-edit': 'cancelEdit',
       'click #delete-item': 'deleteItem'
     },
     currentLi: null,
@@ -15,8 +16,9 @@ define(['text!templates/books.html'], function (bookTemplate) {
       if (this.currentLi == null) {
         this.currentLi = $(e.currentTarget);
         this.currentLi.addClass('edit');
+        this.prevValue = this.currentLi.val();
         var val = $('.edit').html()
-        $('div .edit').html("<input><button id='edit-item'>Edit</button></input>");
+        $('div .edit').html("<input><button id='edit-item'>Edit</button><button id='cancel-edit'>Cancel</button></input>");
         $('input').val(val)
       }
     },
@@ -37,6 +39,9 @@ define(['text!templates/books.html'], function (bookTemplate) {
     deleteItem: function () {
       this.model.destroy();
       this.remove();
+    },
+    cancelEdit: function(e){
+      this.clearEdit($('input').val());
     }
   });
   return bookView;
