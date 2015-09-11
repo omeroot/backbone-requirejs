@@ -1,4 +1,4 @@
-define(['text!templates/header.html'], function (headerTemplate) {
+define(['text!templates/header.html', 'cache'], function (headerTemplate, cache) {
   var headerView = Backbone.View.extend({
     el: $('#header'),
     events: {
@@ -10,10 +10,12 @@ define(['text!templates/header.html'], function (headerTemplate) {
       this.$el.html(headerTemplate);
     },
     redirect_books: function () {
-      window.location.hash = 'profile'
+      //window.location.hash = 'profile'
+      cache.router.navigate('profile',true);
     },
     redirect_add_book: function () {
-      window.location.hash = 'addBook'
+      //window.location.hash = 'addBook'
+      cache.router.navigate('addBook',true);
     },
     redirect_logout: function () {
       $.ajax('/api/logout', {
@@ -21,7 +23,8 @@ define(['text!templates/header.html'], function (headerTemplate) {
         success: function (data, responseText, jqXHR) {
           $.removeCookie("token");
           $.removeCookie("email");
-          window.location.hash = 'login';
+          //window.location.hash = 'login';
+          cache.router.navigate('login',true);
         }
       });
     }

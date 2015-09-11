@@ -62,3 +62,21 @@ ul.menu li ul li {
 ul.menu li:hover ul {
     display: block;
 }
+
+fieldset {
+    width: 400px;
+    margin-bottom: 10px;
+    border-color: #0d65ad;
+}
+
+#image-container {
+    width: 200px;
+    height: 200px;
+    position: relative;
+    display: inline;
+    float: right;
+}
+
+#image-container img {
+    align: center;
+}

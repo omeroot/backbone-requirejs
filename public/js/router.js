@@ -1,4 +1,5 @@
-define(['Views/profile', 'Views/register', 'Views/addBook', 'Views/login', 'Views/header','utils'], function (ProfileView, RegisterView, addBookView, loginView, headerView,utils) {
+define(['Views/profile', 'Views/register', 'Views/addBook', 'Views/login', 'Views/header','utils']
+    ,function (ProfileView, RegisterView, addBookView, loginView, headerView,utils) {
   var MyRouter = Backbone.Router.extend({
     currentView: null,
     loggedIn: false,
@@ -36,7 +37,5 @@ define(['Views/profile', 'Views/register', 'Views/addBook', 'Views/login', 'View
     }
   });
 
-  var r = new MyRouter();
-  Backbone.history.start();
-  return r;
+  return MyRouter;
 });

@@ -1,3 +1,4 @@
 module.exports = {
-  secret : 'omer'
+  secret : 'omer',
+  imageURL : '../db/images/'
 };

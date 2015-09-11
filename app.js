@@ -26,3 +26,7 @@ exServer.apiRouter.get('/books/:id', api.book_id);
 exServer.apiRouter.post('/books', api.book_post);
 exServer.apiRouter.put('/books/:id',api.book_put);
 exServer.apiRouter.delete('/books/:id',api.book_delete);
+
+exServer.app.get("*", function(req, res){
+  res.sendFile(__dirname + '/public/index.html');
+});

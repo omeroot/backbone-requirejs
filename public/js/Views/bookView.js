@@ -7,6 +7,7 @@ define(['text!templates/books.html'], function (bookTemplate) {
       'click #delete-item': 'deleteItem',
     },
     currentLi: null,
+    editHtml: "<input><button id='edit-item'>Edit</button><button id='cancel-edit'>Cancel</button></input>",
     template: _.template(bookTemplate),
     render: function () {
       this.$el.html(this.template(this.model.toJSON()));
@@ -18,14 +19,13 @@ define(['text!templates/books.html'], function (bookTemplate) {
       if (this.currentLi == null) {
         this.currentLi = $(e.currentTarget);
         this.currentLi.addClass('edit');
-        this.prevValue = this.currentLi.val();
         var val = $('.edit').html();
-        $('div .edit').html("<input><button id='edit-item'>Edit</button><button id='cancel-edit'>Cancel</button></input>");
+        $('div .edit').html(this.editHtml);
         $('input').val(val).focus().keydown(function (e) {
           if (e.keyCode === 27) {
             self.cancelEdit(e);
           }
-          if (e.keyCode === 13){
+          if (e.keyCode === 13) {
             self.edit(e);
           }
         });
@@ -49,7 +49,7 @@ define(['text!templates/books.html'], function (bookTemplate) {
       this.model.destroy();
       this.remove();
     },
-    cancelEdit: function(e){
+    cancelEdit: function ( e ) {
       this.clearEdit($('input').val());
     }
   });

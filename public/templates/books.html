@@ -1,9 +1,13 @@
-<fieldset style="width: 300px;margin-bottom: 10px">
-    <ul style="list-style-type: none">
+<fieldset>
+    <ul style="list-style-type: none; float: left">
         <li><%= title%></li>
         <li class="author"><%= author%></li>
         <li class="releaseDate"><%= releaseDate%></li>
         <li class="keywords"><%= keywords%></li>
     </ul>
+    <div id="image-container">
+        <img />
+    </div>
+    <div style="clear: both"></div>
     <button id="delete-item" style="margin-top: 5px">Delete</button>
 </fieldset>

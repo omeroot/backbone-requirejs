@@ -1,7 +1,11 @@
-define(['router'],
-  function (router) {
+define(['router', 'cache'],
+  function (router, cache) {
+    var r = new router();
+    cache.router = r;
+    Backbone.history.start({pushState : true});
+
     var start = function () {
-      router.navigate('login', {
+      r.navigate('login', {
         trigger: true
       });
     };

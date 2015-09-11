@@ -1,7 +1,11 @@
 var utils = require('../utils/utils.js');
 var uuid = require('node-uuid');
+var fs = require('fs');
+var zlib = require('zlib');
+var conf = require('../conf/conf.js');
+
 module.exports = function (db) {
-  var module = {}
+  var module = {};
 
   module.verifyme = function (req, res) {
     res.status(200).json({success: true});
@@ -20,6 +24,7 @@ module.exports = function (db) {
   };
 
   module.book_id = function (req, res) {
+
     res.json(db.books('books').find({id: req.params.id}));
   };
 

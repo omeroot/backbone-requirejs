@@ -9,7 +9,8 @@ require.config({
     router : 'router',
     mainView : 'mainView',
     bookCol : 'Collections/bookCol',
-    utils: 'modules/_utils'
+    utils: 'modules/_utils',
+    cache: 'cache'
   },
   shim : {
     'jQuery': {
